@@ -1,8 +1,9 @@
 // import React from 'react'
-
+'use client'
 import Container from "../Container";
 import Logo from "./Logo"
 import Search from "./Search";
+import UserMenu from "./UserMenu";
 
 export default function Navbar() {
   return (
@@ -18,6 +19,7 @@ export default function Navbar() {
              md:gap-0">
              <Logo />
              <Search />
+             <UserMenu />
              </div>
             </Container>
         </div>
