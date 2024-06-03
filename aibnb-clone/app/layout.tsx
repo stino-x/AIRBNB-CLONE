@@ -7,7 +7,6 @@ import ClientOnly from "./components/ClientOnly";
 import RegisterModal from "./components/modals/RegisterModal";
 import ToasterProvider from "./providers/ToasterProvider";
 import LoginModal from "./components/modals/LoginModal";
-import getCurrentUSer from "./actions/getCurrentUser";
 
 const inter = Inter({ subsets: ["latin"] });
 const nunito = Nunito({ subsets: ["latin"] });
@@ -17,12 +16,11 @@ export const metadata: Metadata = {
   description: "Airbnb clone",
 };
 
-export default async function  RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const currentuser = await getCurrentUSer()
   return (
     <html lang="en">
       {/* Clientonly component  fixes hydration error thats caused by the app folder routing somehow */}
@@ -30,7 +28,7 @@ export default async function  RootLayout({
       <ToasterProvider />
       <RegisterModal />
       <LoginModal />
-      <Navbar currentUser={currentuser} />
+      <Navbar />
       </ClientOnly>
       <body className={nunito.className}>{children}</body>
     </html>
