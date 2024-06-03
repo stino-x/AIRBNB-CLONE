@@ -11,6 +11,7 @@ import toast from 'react-hot-toast';
 import Button from '../Button';
 import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from 'react-icons/ai';
+import { signIn } from 'next-auth/react';
 
 interface RegisterModalProps {
     // Define the props for the RegisterModal component here
@@ -33,6 +34,12 @@ const RegisterModal: React.FC<RegisterModalProps> = () => {
             password: '',
         }
     });
+
+    // const onClick  = (provider: "google" | "github") => {
+    //     signIn(provider, {
+    //         callbackUrl: DEFAULT_LOGIN_REDIRECT,
+    //     })
+    // }
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true)
@@ -85,8 +92,8 @@ const RegisterModal: React.FC<RegisterModalProps> = () => {
     const footerContent = (
         <div className="flex flex-col gap-4 mt-3">
             <hr />
-            <Button outline label="contnue with google" icon={FcGoogle} onClick={() => {}}  />
-            <Button outline label="contnue with github" icon={AiFillGithub} onClick={() => {}}  />
+            <Button outline label="contnue with google" icon={FcGoogle} onClick={() => signIn('google')}  />
+            <Button outline label="contnue with github" icon={AiFillGithub} onClick={() => signIn('github')}  />
             <div className="text-neutral-500 text-center  mt-4 font-light">
                 <div className=" justify-center flex flex-row items-center gap-2">
                     <div>

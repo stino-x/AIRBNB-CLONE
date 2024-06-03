@@ -14,7 +14,7 @@ datasource db {
 }
 
 model User {
- id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   email     String?   @unique
   emailVerified DateTime?
   image String?
@@ -31,7 +31,7 @@ model User {
 }
 
 model Account {
- id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   provider   String
   providerAccountId String
   userId     String @db.ObjectId
@@ -49,7 +49,7 @@ model Account {
 }
 
 model Listing {
- id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   title     String
   description String
   imageSrc String
@@ -70,7 +70,7 @@ model Listing {
 }
 
 model Reservation {
- id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   startDate DateTime
   endDate   DateTime
   totalPrice Int
