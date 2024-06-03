@@ -59,7 +59,7 @@ const LoginModal: React.FC<LoginModalProps> = () => {
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
-            <Heading title='wlecome tback!!' subtitle='Login into your account '  />
+            <Heading title='welcome tback!!' subtitle='Login into your account'  />
              {/* <Input 
                 id="name" 
                 label="Name" 
@@ -92,8 +92,8 @@ const LoginModal: React.FC<LoginModalProps> = () => {
     const footerContent = (
         <div className="flex flex-col gap-4 mt-3">
             <hr />
-            <Button outline label="contnue with google" icon={FcGoogle} onClick={() => {}}  />
-            <Button outline label="contnue with github" icon={AiFillGithub} onClick={() => {}}  />
+            <Button outline label="contnue with google" icon={FcGoogle} onClick={() => signIn('google')}  />
+            <Button outline label="contnue with github" icon={AiFillGithub} onClick={() => signIn('github')}  />
             <div className="text-neutral-500 text-center  mt-4 font-light">
                 <div className=" justify-center flex flex-row items-center gap-2">
                     <div>
@@ -116,7 +116,7 @@ const LoginModal: React.FC<LoginModalProps> = () => {
             onClose={LoginModal.onClose}
             onSubmit={handleSubmit(onSubmit)}
             title="Login"
-            actionLabel="Register"
+            actionLabel="Log in"
             disabled={isLoading}
             body={bodyContent}
             footer={footerContent}
