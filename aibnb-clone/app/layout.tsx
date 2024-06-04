@@ -7,6 +7,7 @@ import ClientOnly from "./components/ClientOnly";
 import RegisterModal from "./components/modals/RegisterModal";
 import ToasterProvider from "./providers/ToasterProvider";
 import LoginModal from "./components/modals/LoginModal";
+import RentModal from "./components/modals/RentModal";
 import getCurrentUSer from "./actions/getCurrentUser";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,13 +27,16 @@ export default async function  RootLayout({
   return (
     <html lang="en">
       {/* Clientonly component  fixes hydration error thats caused by the app folder routing somehow */}
+      <body className={nunito.className}>
       <ClientOnly>
       <ToasterProvider />
       <RegisterModal />
+      <RentModal />
       <LoginModal />
       <Navbar currentUser={currentuser} />
       </ClientOnly>
-      <body className={nunito.className}>{children}</body>
+        {children}
+        </body>
     </html>
   );
 }
