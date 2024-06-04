@@ -13,6 +13,8 @@ import { FcGoogle } from 'react-icons/fc';
 import { AiFillGithub } from 'react-icons/ai';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+// import RegisterModal from './RegisterModal';
+import useRegisterModal from '@/app/hooks/useRegisterModal';
 
 interface LoginModalProps {
     // Define the props for the LoginModal component here
@@ -21,6 +23,7 @@ interface LoginModalProps {
 const LoginModal: React.FC<LoginModalProps> = () => {
     // Implement the component logic here
     const LoginModal = useLoginModal();
+    const RegisterModal = useRegisterModal();
     const router = useRouter();
     const [isLoading, setIsLoading] = useState(false);
     const {
@@ -55,7 +58,12 @@ const LoginModal: React.FC<LoginModalProps> = () => {
                 toast.error(callback.error)
             }
         })
+
     }
+    const toggle = useCallback(() => {
+        LoginModal.onClose()
+        RegisterModal.onOpen()
+    }, [LoginModal, RegisterModal])
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
@@ -97,10 +105,10 @@ const LoginModal: React.FC<LoginModalProps> = () => {
             <div className="text-neutral-500 text-center  mt-4 font-light">
                 <div className=" justify-center flex flex-row items-center gap-2">
                     <div>
-                        Already have an account
+                        first time using Airbnb?
                     </div>
-                    <div className=" text-neutral-800 cursor-pointer hover:underline" onClick={LoginModal.onClose}>
-                        Log in
+                    <div className=" text-neutral-800 cursor-pointer hover:underline" onClick={toggle}>
+                        Create an Account
                     </div>
                 </div>
             </div>
