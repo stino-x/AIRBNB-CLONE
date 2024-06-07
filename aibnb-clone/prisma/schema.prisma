@@ -54,9 +54,7 @@ model Listing {
   description String
   imageSrc String
   price     Float
-  beds      Int
-  baths     Int
-  guests    Int
+  category  String
   roomCount    Int
   bathroomCount    Int
   guestCount Int
