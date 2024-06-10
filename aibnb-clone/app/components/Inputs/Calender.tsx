@@ -1,25 +1,25 @@
-// Calendar.tsx
+'use client'
 import React, { useState } from 'react';
-import { Range, RangeKeyDict } from 'react-date-range';
+import { DateRange, Range, RangeKeyDict } from 'react-date-range';
 
 interface CalendarProps {
-  value: Range | null;
+  value: Range;
   disabledDates?: Date[];
-  onChange: (value: RangeKeyDict | null) => void;
+  onChange: (value: RangeKeyDict) => void;
 }
 
 const Calendar: React.FC<CalendarProps> = ({ value, disabledDates, onChange }) => {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(value);
-
-  const handleDateClick = (date: Date) => {
-    setSelectedDate(date);
-    onChange(date);
-  };
-
-  // Add your calendar rendering logic here
 
   return (
         <DateRange 
+        rangeColors={['#262626']}
+        disabledDates={disabledDates}
+        onChange={onChange}
+        ranges={[value]}
+        minDate={new Date()}
+        date={new Date()}
+        direction='vertical'
+        showDateDisplay={false}
         />
   );
 };
