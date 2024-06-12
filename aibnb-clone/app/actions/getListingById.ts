@@ -1,30 +1,39 @@
-import prisma from "@/app/libs/prismadb"
+import prisma from "@/app/libs/prismadb";
 
 interface IParams {
     listingId?: string;
 }
 
 export default async function getListingById(
-    { params }: { params: IParams }
+    params: IParams
 ) {
     try {
-    const { listingId } = params;
+        console.log('getListingById params:', JSON.stringify(params));
+        const { listingId } = params;
+        console.log('getListingById params:', listingId);
 
-    const listing = await prisma.listing.findUnique({
-        where: {
-            id: listingId
-        },
-        include: {
-            user: true
+        if (!listingId) {
+            throw new Error("Listing ID is missing");
         }
-    });
 
-    if (!listing) {
-        return null
-    }
+        // const listingIdString = listingId.toString();
 
-    return listing;
+        const listing = await prisma.listing.findUnique({
+            where: {
+                id: listingId
+            },
+            include: {
+                user: true
+            }
+        });
+
+        if (!listingId) {
+            throw new Error("Listing ID is missing");
+        }
+
+        return listing || null; // Return null if listing is not found
     } catch(error: any) {
-        throw new Error(error);
+        throw new Error("Error retrieving listing: " + error.message);
+        // ^^^ Throw a new Error object with a custom message
     }
 }

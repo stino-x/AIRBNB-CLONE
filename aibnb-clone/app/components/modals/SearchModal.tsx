@@ -81,7 +81,7 @@ const SearchModal: React.FC<SearchModalProps> = (props) => {
         }
 
         const url = qs.stringifyUrl({
-            url: '/listings',
+            url: '/',
             query: updatedQuery
         }, {
             skipNull: true
@@ -121,7 +121,7 @@ const SearchModal: React.FC<SearchModalProps> = (props) => {
             />
             <hr />
             <Map
-            center={location?.latlng}
+            center={location?.latlng as [number, number]}
             />
         </div>
     )

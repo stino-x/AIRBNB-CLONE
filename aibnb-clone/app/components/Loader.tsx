@@ -1,9 +1,13 @@
+'use client'
 import React from 'react';
+import { PuffLoader } from 'react-spinners';
 
 const Loader: React.FC = () => {
     return (
-        <div className="loader">
-            <div className="loader__spinner"></div>
+        <div className="h-[70vh] flex flex-col justify-center items-center">
+            <PuffLoader 
+            size={100}
+            color="red"/>
         </div>
     );
 };
