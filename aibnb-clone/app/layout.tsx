@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Nunito, Inter } from "next/font/google";
 import "./globals.css";
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; 
 import Navbar from "./components/navbar/Navbar";
 import { Modal } from "./components/modals/Modal";
 import ClientOnly from "./components/ClientOnly";

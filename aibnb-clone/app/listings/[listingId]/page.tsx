@@ -12,7 +12,8 @@ interface IParams {
 
 const ListingPage = async ({ params }: {params: IParams}) => {
     // Add your component logic here
-    const listing = await getListingById({params});
+    console.log('ListingPage params:', JSON.stringify(params));
+    const listing = await getListingById(params);
 
     const reservations = await getReservations(params)
 

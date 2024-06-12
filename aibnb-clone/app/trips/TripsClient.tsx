@@ -1,3 +1,5 @@
+'use client'
+
 import { Listing, Reservation, User } from "@prisma/client";
 import Container from "../components/Container";
 import Heading from "../components/Heading";
