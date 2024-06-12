@@ -1,4 +1,5 @@
 'use client'
+import useSearchModal from '@/app/hooks/useSearchModal';
 import React, { useState } from 'react';
 import { BiSearch } from 'react-icons/bi';
 
@@ -7,9 +8,10 @@ import { BiSearch } from 'react-icons/bi';
 // }
 
 const Search = () => {
+    const searchmodal = useSearchModal()
 
     return (
-        <div className="border-[1px] w-full md:w-auto py-2 rounded-full shadow-sm hover:shadow-md transition cursor:pointer">
+        <div onClick={searchmodal.onOpen} className="border-[1px] w-full md:w-auto py-2 rounded-full shadow-sm hover:shadow-md transition cursor:pointer">
             {/* <input
                 type="text"
                 value={query}

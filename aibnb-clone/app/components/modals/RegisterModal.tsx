@@ -48,7 +48,9 @@ const RegisterModal: React.FC<RegisterModalProps> = () => {
 
         axios.post('/api/register', data)
         .then(() => {
+            toast.success('youve successfully registered/signed in')
             registerModal.onClose()
+            LoginModal.onOpen()
         })
         .catch((error) => {
             // console.log(error)
