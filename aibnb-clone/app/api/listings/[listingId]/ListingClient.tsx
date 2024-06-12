@@ -14,6 +14,7 @@ import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import { IconType } from 'react-icons';
+import { Range } from 'react-date-range';
 
 const initialDateRange = {
     startDate: new Date(),
@@ -55,7 +56,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
 
     const [isLoading, setisLoading] = useState(false);
     const [totalPrice, settotalPrice] = useState(listing.price);
-    const [dateRange, setdateRange] = useState(initialDateRange);
+    const [dateRange, setdateRange] = useState<Range>(initialDateRange);
 
     const onCreateReservation = useCallback(() => {
         if (!currentUser) {
@@ -72,7 +73,8 @@ const ListingClient: React.FC<ListingClientProps> = ({
         })
         .then(() => {
             toast.success('Listing reserved');
-            router.refresh();
+            setdateRange(initialDateRange)
+            router.push('/trips');
         })
         .catch(() => {
             toast.error('Something went wrong');
