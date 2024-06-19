@@ -12,6 +12,17 @@ interface HomeProps {
 const Home = async ({ searchParams }: HomeProps) => {
   const getlistings = await getLisitings(searchParams);
   const currentuser = await getCurrentUSer();
+
+  if (!currentuser) {
+    return (
+      <ClientOnly>
+        <EmptyState 
+          title='Unauthorized'
+          subtitle='Please login'/>
+      </ClientOnly>
+    );
+  }
+
   if (getlistings.length === 0) {
     return (
       <ClientOnly>
@@ -22,23 +33,23 @@ const Home = async ({ searchParams }: HomeProps) => {
     );
   }
 
-  // throw new Error('Something wrong')  
   return (
-      <ClientOnly>
-        <Container>
-          <div className="pt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
-            {getlistings.map((listing) => {
-              console.log('the id that passed from the home ' + listing.id)
-              return (
-                <ListingCard
-                currentUser={currentuser ? currentuser : null}
+    <ClientOnly>
+      <Container>
+        <div className="pt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
+          {getlistings.map((listing) => {
+            console.log('the id that passed from the home ' + listing.id);
+            return (
+              <ListingCard
+                currentUser={currentuser}
                 key={listing.id}
-                data={listing}/>
-              )
-            })}
-          </div>
-        </Container>
-      </ClientOnly>
+                data={listing}
+              />
+            )
+          })}
+        </div>
+      </Container>
+    </ClientOnly>
   );
 }
 

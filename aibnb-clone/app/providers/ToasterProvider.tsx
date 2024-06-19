@@ -1,27 +1,30 @@
 'use client'
+// ToasterProvider.tsx
+import React, { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
-import React, { createContext, useState } from 'react';
-import { Toaster } from 'react-hot-toast';
-
-// Create a context for the toaster
-export const ToasterContext = createContext<{
-    showToast: (message: string) => void;
-}>({
-    showToast: () => {},
-});
+// Define the type for the props
+interface ToasterProviderProps {
+  children: React.ReactNode;
+}
 
 // ToasterProvider component
-const ToasterProvider: React.FC = ({ children }) => {
-    const [toastMessage, setToastMessage] = useState<string>('');
+const ToasterProvider: React.FC<ToasterProviderProps> = ({ children }) => {
+  const [toastMessage, setToastMessage] = useState<string>('');
 
-    // Function to show toast message
-    const showToast = (message: string) => {
-        setToastMessage(message);
-    };
+  // Function to show toast message
+  const showToast = (message: string) => {
+    setToastMessage(message);
+    // Display the toast message using react-hot-toast
+    toast(message);
+  };
 
-    return (
-        <Toaster />
-    );
+  return (
+    <div>
+      <Toaster />
+      {children}
+    </div>
+  );
 };
 
 export default ToasterProvider;
