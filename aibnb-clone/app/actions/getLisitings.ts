@@ -1,7 +1,7 @@
 import prisma from '@/app/libs/prismadb';
 
 export interface ILisitingParams {
-    // userId?: string;
+    userId?: string;
     guestCount?: number,
     roomCount?: number,
     bathroomCount?: number,
@@ -13,13 +13,13 @@ export interface ILisitingParams {
 
 const getLisitings = async (params: ILisitingParams) => {
     try {
-        const { guestCount,roomCount, bathroomCount, startDate, endDate, locationValue, category } = params
+        const { guestCount, userId, roomCount, bathroomCount, startDate, endDate, locationValue, category } = params
 
         let query: any = {};
 
-        // if (userId) {
-        //     query.userId = userId
-        // }
+        if (userId) {
+            query.userId = userId
+        }
 
         if (category) {
             query.category = category
