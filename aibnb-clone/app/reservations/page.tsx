@@ -41,9 +41,6 @@ const ReservationsPage: React.FC<Props> = async () => {
 
     return (
         <ClientOnly>
-                <EmptyState 
-                title='No reservations found'
-                subtitle='Looks like you have no reservations'/>
                 <ReservationsClient 
                 reservations={reservations}
                 currentUser={currentuser}/>
