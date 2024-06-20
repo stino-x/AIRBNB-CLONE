@@ -1,3 +1,30 @@
+# Table of Contents
+
+- [RentApp (Airbnb Clone) Project](#rentapp-airbnb-clone-project)
+  - [Overview](#overview)
+  - [Features](#features)
+  - [Technologies Used](#technologies-used)
+    - [Frontend](#frontend)
+    - [Backend](#backend)
+    - [Other Tools](#other-tools)
+    - [Deployment](#deployment)
+  - [Installation](#installation)
+    - [Prerequisites](#prerequisites)
+    - [Steps](#steps)
+  - [Usage](#usage)
+    - [User Authentication](#user-authentication)
+    - [Property Listings](#property-listings)
+    - [Booking](#booking)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Deployment](#deployment)
+    - [Vercel Deployment](#vercel-deployment)
+  - [Contact](#contact)
+
+
+
+
+
 # RentApp (Airbnb Clone) Project
 
 ## Overview
@@ -11,7 +38,6 @@ RentApp is a clone of Airbnb, a platform where users can list, discover, and boo
 - **Property Listings**: Users can list their properties, including descriptions, photos, and pricing.
 - **Search Functionality**: Users can search for properties based on location, price, and other filters.
 - **Booking System**: Users can book properties for specific dates.
-- **Reviews and Ratings**: Users can leave reviews and ratings for properties.
 - **Responsive Design**: The application is optimized for both desktop and mobile devices.
 
 ## Technologies Used
@@ -48,8 +74,7 @@ RentApp is a clone of Airbnb, a platform where users can list, discover, and boo
 
 ### Deployment
 
-- **Docker**: A set of platform-as-a-service products that use OS-level virtualization to deliver software in packages called containers.
-- **AWS/GCP/Azure**: Cloud platforms for hosting applications.
+- **Vercel**: A set of platform-as-a-service products that use OS-level virtualization to deliver software in packages called containers.
 
 ## Installation
 
@@ -57,41 +82,72 @@ RentApp is a clone of Airbnb, a platform where users can list, discover, and boo
 
 - Node.js (version 12.x or later)
 - MongoDB (local instance or MongoDB Atlas)
-- Docker (optional, for containerized deployment)
 
 ### Steps
 
 1. **Clone the repository**:
 
    ```sh
-   git clone https://github.com/yourusername/rentapp.git
+   git clone https://github.com/stino-x/AIRBNB-CLONE.git
    cd rentapp
 
 
-2 **Install frontend dependencies**:
+2. **Install dependencies**:
 
-```sh
-cd client
-npm install
+   ```sh
+   cd aibnb-clone
+   npm install
 
-3 **Run the app**:
+3. **Configure environment variables**:
 
-npm  run dev
+   DATABASE_URL=
+   NEXTAUTH_SECRET=
+   GITHUB_ID=
+   GITHUB_SECRET=
+   GOOGLE_CLIENT_ID=
+   GOOGLE_CLIENT_SECRET=
+   NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
 
 
-Usage
-User Authentication
+3. **Run the app**:
 
-Sign Up: Create a new account using the sign-up form.
-Log In: Log in to your account using your email and password or via Google/GitHub OAuth.
-Log Out: Log out from your account.
+   ```sh
+   npm run dev
 
-Property Listings
+# Usage
 
-List a Property: Navigate to the "List your property" page and fill in the details.
-View Listings: Browse available properties on the home page or use the search feature.
+## User Authentication
+- **Sign Up:** Create a new account using the sign-up form.
+- **Log In:** Log in to your account using your email and password or via Google/GitHub OAuth.
+- **Log Out:** Log out from your account.
 
-Booking
+## Property Listings
+- **List a Property:** Navigate to the "List your property" page and fill in the details.
+- **View Listings:** Browse available properties on the home page or use the search feature.
 
-Search Properties: Use the search bar to find properties by location, price, and other criteria.
-Book a Property: Select available dates and book the property.
+## Booking
+- **Search Properties:** Use the search bar to find properties by location, price, and other criteria.
+- **Book a Property:** Select available dates and book the property.
+
+
+## Contributing
+We welcome contributions to improve RentApp. To contribute, follow these steps:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes and commit them (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a pull request.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
+## Deployment
+
+### Vercel Deployment
+link: https://rent-app-austin.vercel.app/
+
+## Contact
+For any questions or feedback, please reach out to us at [austindev214@gmail.com](mailto:austindev214@gmail.com).
+
+
+
