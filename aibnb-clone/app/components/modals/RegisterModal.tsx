@@ -44,22 +44,29 @@ const RegisterModal: React.FC<RegisterModalProps> = () => {
     // }
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
-        setIsLoading(true)
-
+        setIsLoading(true);
+    
         axios.post('/api/register', data)
-        .then(() => {
-            toast.success('youve successfully registered/signed in')
-            registerModal.onClose()
-            LoginModal.onOpen()
-        })
-        .catch((error) => {
-            // console.log(error)
-            toast.error('Something went wrong')
-        })
-        .finally(() => {
-            setIsLoading(false);       
-        })
-    }
+            .then(() => {
+                toast.success('You\'ve successfully registered/signed in');
+                registerModal.onClose();
+                LoginModal.onOpen();
+            })
+            .catch((error) => {
+                const errorMessage = error?.response?.data?.error || 'Something went wrong';
+                
+                if (errorMessage === 'Missing required fields') {
+                    toast.error('Please fill out all required fields.');
+                } else if (errorMessage === 'User already exists') {
+                    toast.error('This email is already registered. Please log in.');
+                } else {
+                    toast.error(errorMessage);
+                }
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
+    };
 
     const toggle = useCallback(() => {
         LoginModal.onOpen()
